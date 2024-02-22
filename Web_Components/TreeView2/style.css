@@ -1,0 +1,139 @@
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: auto;
+  background: rgb(0,212,255);
+  background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(11,42,105,1) 25%, rgba(2,6,16,1) 40%, rgba(0,0,0,1) 50%, rgba(1,8,16,1) 60%, rgba(6,54,109,1) 75%, rgba(0,212,255,1) 100%);
+  font-family: Roboto;
+  color: #e6e8ff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px;
+}
+
+li {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 100px;
+  margin-bottom: 10px;
+  background-color: #f5f5f5;
+  transition: background-color 0.2s ease-in-out;
+}
+
+li:hover {
+  background-color: #ddd;
+}
+
+
+/* Estilos específicos para TreeView */
+
+.header-view {
+  width: 300px;
+  border: 10px solid #ddd;
+  border-radius: 4px;
+  overflow: auto;
+}
+
+.tree-view li {
+  position: relative;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  
+}
+
+.tree-view li::marker{
+  color: red;
+  width: 100px;
+  height: 100px;  
+}
+
+.tree-view li::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  width: 100px;
+  height: 100px;
+}
+
+.tree-view li.expanded::before {
+  border-bottom: 1px solid #ddd;
+}
+
+.tree-view li.expanded > ul {
+  display: block;
+}
+
+.tree-view li > ul {
+  display: none;
+}
+
+/* Estilos para checkbox */
+
+.tree-view input[type="checkbox"] {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+/*body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: auto;
+  background: rgb(0,212,255);
+  background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(11,42,105,1) 25%, rgba(2,6,16,1) 40%, rgba(0,0,0,1) 50%, rgba(1,8,16,1) 60%, rgba(6,54,109,1) 75%, rgba(0,212,255,1) 100%);
+  font-family: Roboto;
+  color: #e6e8ff;
+  
+  
+}
+
+
+.header-view {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style-type: circle;
+    background-color: white;
+    border-radius: 10px;
+    border: 5px solid #00b7ff;
+  }
+
+  .ul-todos{
+    cursor: pointer;
+  }
+  
+
+li > ul {
+        display: none;
+      }
+li.expanded > ul {
+        display: block;
+      }
+
+
+  ul {
+    list-style-type: none;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    margin-right: 40px;
+  }
+
+  */

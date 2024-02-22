@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Animación en Canvas</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="miCanvas" width="500" height="200"></canvas>
+
+  <script>
+    // Obtener el contexto del canvas
+    var canvas = document.getElementById("miCanvas");
+    var ctx = canvas.getContext("2d");
+
+    // Definir las propiedades de la animación
+    var x = 0; // Posición inicial en el eje x
+    var y = 0; // Posición inicial en el eje y
+    var velocidadX = 2; // Velocidad de movimiento en el eje x
+
+    // Función para dibujar y animar en el canvas
+    function animacion() {
+      // Limpiar el canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Dibujar la animación
+      ctx.fillRect(x, y, 50, 50); // Ejemplo de dibujo de un rectángulo
+
+      // Actualizar la posición de la animación
+      x += velocidadX;
+
+      // Reiniciar la posición si alcanza el borde derecho del canvas
+      if (x + 50 > canvas.width) {
+        x = 0;
+      }
+
+      // Repetir la animación
+      requestAnimationFrame(animacion);
+    }
+
+    // Iniciar la animación
+    animacion();
+  </script>
+</body>
+</html>

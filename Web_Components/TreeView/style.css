@@ -1,0 +1,26 @@
+.header-view {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style-type: circle;
+  }
+
+  .ul-todos{
+    cursor: pointer;
+  }
+  
+
+li > ul {
+        display: none;
+      }
+li.expanded > ul {
+        display: block;
+      }
+
+
+  ul {
+    list-style-type: none;
+    margin-top: 9px;
+    margin-bottom: 9px;
+  }

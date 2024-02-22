@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dos Canvas con movimiento WASD</title>
+</head>
+<body>
+  <div id="contenedor-canvas">
+    <canvas id="canvas-grande" width="500" height="500"></canvas>
+    <canvas id="canvas-pequeno" width="100" height="100"></canvas>
+</div>
+
+  <script>
+    const canvasGrande = document.getElementById("canvas-grande");
+    const ctxGrande = canvasGrande.getContext("2d");
+    const canvasPequeno = document.getElementById("canvas-pequeno");
+    const ctxPequeno = canvasPequeno.getContext("2d");
+
+    let x = 0, y = 0; // Posición inicial del canvas pequeño
+
+    // Función para dibujar el canvas pequeño dentro del grande
+    function dibujar() {
+      ctxGrande.clearRect(0, 0, canvasGrande.width, canvasGrande.height);
+      ctxGrande.drawImage(canvasPequeno, x, y);
+    }
+
+    // Función para manejar las pulsaciones de teclas WASD
+    function moverCanvas(event) {
+      const key = event.key;
+      const movimiento = 10; // Velocidad de movimiento
+
+      switch (key) {
+        case "w":
+          y -= movimiento;
+          break;
+        case "a":
+          x -= movimiento;
+          break;
+        case "s":
+          y += movimiento;
+          break;
+        case "d":
+          x += movimiento;
+          break;
+      }
+
+      // Mantener el canvas pequeño dentro del grande
+      if (x < 0) x = 0;
+      if (y < 0) y = 0;
+      if (x + canvasPequeno.width > canvasGrande.width) {
+        x = canvasGrande.width - canvasPequeno.width;
+      }
+      if (y + canvasPequeno.height > canvasGrande.height) {
+        y = canvasGrande.height - canvasPequeno.height;
+      }
+
+      dibujar();
+    }
+
+    // Agregar eventos de teclado
+    window.addEventListener("keydown", moverCanvas);
+
+    // Dibujar el canvas pequeño inicialmente
+    ctxPequeno.fillStyle = "red";
+    ctxPequeno.fillRect(0, 0, canvasPequeno.width, canvasPequeno.height);
+    
+
+    dibujar();
+  </script>
+</body>
+
+</html>
